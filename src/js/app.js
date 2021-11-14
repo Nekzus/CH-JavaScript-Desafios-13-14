@@ -14,14 +14,12 @@ const renderizarComics = (comics) => {  // Función que renderiza los comics en 
         <div class="card-body">
             <h4 class="card-title text-center">${title}</h4>
         </div>
-    </div>
-</div>
-    `;
+    </div>`;
     listadoComics.appendChild(tarjeta); // Agrega la tarjeta al DOM
 }
 
-$('.card')
-$('.btn-traer-comics').on('click', () => { // Espera a que se haga click en el botón.
+$('.btn-traer-comics').on('click', (e) => { // Espera a que se haga click en el botón.
+    e.preventDefault(); // Evita que se recargue la página.
     $(document).ready(() => {
         $('#listado-comics').hide();
         $.ajax({ // Hace una petición a la API
@@ -36,17 +34,7 @@ $('.btn-traer-comics').on('click', () => { // Espera a que se haga click en el b
                         $('#listado-comics').fadeOut(2000, () => {
                             $('#listado-comics').fadeIn(2000, () => {
 
-                                $('.card').animate({
-                                    left: '250px',
-                                    opacity: '0',
-                                    height: '150px',
-                                    width: '150px',
-                                },
-                                    "fast",
-                                    () => {
-                                        $('.titulo').hide()
-                                    }
-                                )
+                                $('#listado-comics').css('background-color', 'black');
 
                             });
                         });;
