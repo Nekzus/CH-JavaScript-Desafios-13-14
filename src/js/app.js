@@ -18,9 +18,11 @@ const renderizarComics = (comics) => {  // Función que renderiza los comics en 
     listadoComics.appendChild(tarjeta); // Agrega la tarjeta al DOM
 }
 
-$('.btn-traer-comics').on('click', (e) => { // Espera a que se haga click en el botón.
-    e.preventDefault(); // Evita que se recargue la página.
+$('.btn-traer-comics').on('click', () => { // Espera a que se haga click en el botón.
+
     $(document).ready(() => {
+        $('#listado-comics').css('background-color', 'white');
+        $('#listado-comics').empty(); // Limpia el contenido del DOM
         $('#listado-comics').hide();
         $.ajax({ // Hace una petición a la API
             method: 'GET',
